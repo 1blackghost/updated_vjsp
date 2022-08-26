@@ -1,0 +1,86 @@
+<div id="update" >
+    {% for message in msg %}
+        {%if message[0]==me%}
+            <p style="float:right">{{message[0]}}</p>
+            <br>
+            <br>
+            {% if message[1].startswith('detectionVideo~')%}
+                {%set var = message[1].split("~")%}
+
+              <video width="300" height="300" style="float:right" controls src={{var[1]}}></video>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>   <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+            {% elif message[1].startswith('detectionIMage~')%}
+                {%set var = message[1].split("~")%}
+                <img width="300" height="300" style="float:right" src={{var[1]}}>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>   <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            {% elif message[1].startswith('http')%}
+                <a class="mymsg" style="float:right;" href={{message[1]}}>click here to access the shared link</a>
+
+            {%else%}
+            <p  class="mymsg" id="mymsg">{{message[1]}}</p>
+                                    <br>
+                                    <br>
+                                    <br>
+          <br>
+          {%endif%}
+        {%else%}                 
+
+            <p>{{message[0]}}</p>
+                {% if message[1].startswith('detectionVideo~')%}
+                    {%set var = message[1].split("~")%}
+
+                    <video width="300" height="300"  controls src={{var[1]}}></video>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                
+                {% elif message[1].startswith('detectionIMage~')%}
+                    {%set var = message[1].split("~")%}
+                    <img width="300" height="300" src={{var[1]}}>
+                    <br>
+                    <br>
+                    <br>
+                {% elif message[1].startswith('http')%}
+                    <a href={{message[1]}} class="other">click here to access the shared link</a>
+            
+                {%else%}
+                <p class="other" id="getm">
+                    {{ message[1]}}
+                </p>
+                <br>
+                <br>
+                <br>
+                {%endif%}
+        {%endif%}
+    {% endfor %}
+</div>
